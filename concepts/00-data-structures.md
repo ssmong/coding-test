@@ -228,6 +228,7 @@ if not ate_apple:
 
 ### 함정
 
+- **`deque(X)`는 X를 펼친다 (생성자 한정).** `deque((0,0))`은 좌표가 아니라 원소 `0,0` 두 개 → `x,y=q.popleft()` 터짐. 튜플 하나를 시작점으로 넣으려면 `deque([(0,0)])` 또는 `q.append((0,0))`. **`append`는 펼치지 않고 통째로** 넣으므로 BFS 시작점은 `q.append((r,c,...))`가 안전.
 - `q.pop(0)` **은 없다.** `popleft()`가 맞다.
 - 빈 덱에서 `pop`하면 `IndexError` → `while q:` 가드.
 - 중간 인덱스 접근 `q[k]`은 **O(N)**. 랜덤 액세스 많으면 list가 낫다.
@@ -252,11 +253,20 @@ x = heapq.heappop(h)       # 1 (항상 가장 작은 값)
 heapq.heappush(h, -value)
 x = -heapq.heappop(h)
 
-# 튜플 저장 시 첫 원소 기준으로 정렬
-heapq.heappush(h, (dist, node))
+# 튜플 저장 시 첫 원소 기준으로 정렬 (같으면 둘째)
+heapq.heappush(h, (dist, node))   # 다익스트라: (거리, 정점)
+
+top = h[0]                 # 안 꺼내고 최솟값 peek (읽기만 OK)
+heapq.heapify(arr)         # 기존 리스트를 O(n)에 heap으로
+while h: ...               # 빈 체크
 ```
 
-**언제 쓰나:** 다익스트라, K번째로 큰/작은 값, "우선순위 기반 이벤트 처리". 기본 구현으로는 A형 기출에서 자주 나오지는 않지만 알아두면 도움.
+**언제 쓰나:** 다익스트라, K번째로 큰/작은 값, "우선순위 기반 이벤트 처리".
+
+### 함정
+- **heap은 그냥 list지만 직접 건드리지 말 것.** `append`/`sort`/`h[i]=...` 금지(불변식 깨짐). 넣고 빼기는 무조건 `heappush`/`heappop`. `h[0]` 읽기만 예외.
+- **원소는 비교 가능해야.** `(거리, 정점)`에서 거리 동률이면 정점끼리 비교 → 정점이 int면 OK, 비교 불가 객체면 `TypeError`.
+- **decrease-key 없음.** 이미 든 값을 더 작게 갱신하는 기능이 없다 → 다익스트라는 **새 거리로 또 push**하고 pop 때 `if d > dist[u]: continue`로 stale 스킵 (안 하면 TLE).
 
 ---
 

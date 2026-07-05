@@ -1,6 +1,6 @@
 ---
 trigger: "모든 조합/순열을 다 시도해 최선/유효를 찾는" 문제 (연산자 배치, N명 중 K명 고르기, 순열, N-Queen). 최단거리 아님.
-related_problems: [14888, 14889, 15686]
+related_problems: [14888, 14889, 15686, 9663]
 ---
 
 # 백트래킹 템플릿 — 선택 → 재귀 → 되돌리기
@@ -36,6 +36,21 @@ def bt(i, chosen):
     bt(i + 1, chosen)                                    # i 미선택
 ```
 > 조합은 **`i+1`부터** 재귀해야 순서 중복 안 생김(같은 집합 두 번 X).
+
+## 패턴 C — 개수 세기 (9663 N-Queen)
+"몇 가지?"는 **각 호출이 자기 서브트리 개수를 return → 부모가 합산.** nonlocal/전역 불필요.
+```python
+def place(row):
+    if row == N: return 1        # 한 행에 1개씩 다 놓음 → 완성 1가지
+    total = 0
+    for c in range(N):
+        if 놓을수있으면:          # col[c], diag1[row+c], diag2[row-c+N-1] 로 O(1)
+            표시(True); total += place(row + 1); 복구(False)
+    return total
+```
+- **대각선 O(1) 충돌:** ↘는 `row+col` 일정, ↙는 `row-col` 일정 → 불리언 배열 2개면 지난 퀸 `not in` 스캔 불필요. `row-col`은 음수 가능 → **`+(N-1)` 오프셋, 배열 크기 `2N-1`**.
+- **행 충돌 자동 해결:** `place(row)`가 한 행씩 내려가니 같은 행 체크 불필요.
+- ⚠️ 누적값을 **int 인자로** 받아 `+=1` ❌ — 정수는 immutable이라 호출자에 반영 안 됨. **return 합산** 또는 `nonlocal`만 통함. (컨테이너 `[0]` 트릭도 되지만 지저분)
 
 ## itertools vs 직접 백트래킹
 `itertools`는 표준 라이브러리라 항상 허용·관용적. **선택 기준:**

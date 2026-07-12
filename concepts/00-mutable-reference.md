@@ -34,6 +34,23 @@ modify(a);   print(a)   # [99, 2, 3, 4]
 reassign(a); print(a)   # [99, 2, 3, 4]  (변화 없음)
 ```
 
+## `b = a` 자체가 복사가 아니다 — 참조(주소) 공유
+함수 인자만이 아니라 **평범한 대입**도 똑같음. `b = a`는 객체를 복사하지 않고 **참조만 복사** → 항상 같은 주소.
+```python
+x = 1
+y = x
+print(x is y)      # True — 같은 객체(id 동일)
+x = 2              # 1을 고친 게 아니라 x를 새 객체 2에 재바인딩
+print(y)           # 1 — y는 여전히 원래 객체 1
+
+a = [1, 2]
+b = a
+a.append(3)
+print(b)           # [1, 2, 3] — 같은 리스트 in-place 변경 → b도 영향
+```
+- **불변(int/str/tuple):** in-place 변경 불가 → 재바인딩만 가능 → 값복사처럼 안전해 보임.
+- **가변(list/dict):** 같은 객체를 in-place로 바꾸면 다른 이름에도 보임 → 진짜 함정. 원본 지키려면 `b = a[:]` / `deepcopy`.
+
 ## 코드 — 주사위/보드 패턴
 ```python
 def roll(dice, d):

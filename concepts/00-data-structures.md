@@ -165,6 +165,51 @@ s = {}                     # ❌ 이건 빈 dict!
 s = set()                  # ✅
 ```
 
+### "해시 가능(hashable)"이 무슨 뜻인가
+
+`hash(x)` = 객체를 **정수 하나로 요약**하는 함수. `set`/`dict`가 O(1)인 이유 그 자체다.
+```
+s.add("abc")  →  hash("abc") % 크기 = 7번 칸  →  7번 칸에 저장
+"abc" in s    →  hash("abc") % 크기 = 7번 칸  →  7번 칸만 확인 (전체 훑지 않음)
+```
+**mutable이 금지된 이유:** 넣은 뒤 내용이 바뀌면 해시값도 바뀐다 → 물건은 7번 칸에 있는데 3번 칸을 뒤지게 됨.
+```python
+k = [1, 2]; d = {k: 'v'}   # (가정) hash=A → A번 칸 저장
+k.append(3)                 # 이제 hash=B
+d[k]                        # B번 칸을 뒤짐 → 방금 넣은 걸 못 찾음
+```
+파이썬은 이 사고를 원천 차단하려고 mutable을 아예 unhashable로 만들었다. `TypeError`는 불편이 아니라 **안전장치**.
+- 값이 같으면 해시도 같다(보장). 해시가 같다고 값이 같진 않다(충돌) → 칸을 찾은 뒤 `==`로 최종 확인.
+- ⚠️ **불변성은 재귀적.** tuple이어도 **내용물에 mutable이 있으면 해시 불가:**
+  `hash((1,2))` ✅ / `hash((1,(2,3)))` ✅ / `hash((1,[2]))` ❌
+  → 좌표를 set에 넣을 때 `(r,c)`는 되고 `(r,[c])`는 안 되는 이유.
+
+### frozenset — 불변 set (= 해시 가능한 set)
+
+`set`은 mutable이라 **해시 불가** → 다른 set의 원소나 dict 키가 못 된다(`list`가 안 되는 것과 같은 이유). 그럴 때 `frozenset`.
+
+| | 수정 | 해시 | set 원소·dict 키 |
+|---|---|---|---|
+| `list` / `set` | ✅ | ❌ | ❌ |
+| `tuple` / `frozenset` | ❌ | ✅ | ✅ |
+
+```python
+seen = set()
+seen.add({0, 1})                 # ❌ TypeError: unhashable type: 'set'
+seen.add(frozenset({0, 1}))      # ✅
+frozenset([0,1]) == frozenset([1,0])   # True — 순서 무관
+```
+
+**언제 쓰나:** "원소 모임 자체"를 키로 삼아 **중복 조합을 걸러낼 때**. 예 — 백트래킹 대칭 가지치기에서 "이 말이 뻗는 방향들의 집합"이 같으면 결과도 같으니 한 번만 탐색:
+```python
+key = frozenset(dirs_of(v, d))
+if key in seen: continue
+seen.add(key)
+```
+- `tuple`로도 되지만 **순서까지 따지므로** `tuple(sorted(...))`로 직접 정규화해야 함. frozenset은 그 정규화가 타입에 내장.
+- ⚠️ **리터럴 문법 없음** — `{1,2}`는 set. 반드시 `frozenset([1,2])`. 빈 것은 `frozenset()`.
+- ⚠️ 생성 비용이 tuple보다 큼. 수백만 번 만드는 핫 루프면 `tuple(sorted(...))`가 빠를 수 있음.
+
 ---
 
 ## 5. deque — 양끝 큐 (`collections.deque`)

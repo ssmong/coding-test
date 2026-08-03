@@ -35,8 +35,8 @@ def main():
     input = sys.stdin.readline
 
     N = int(input())
-    nums = list[map(int, input().split())]
-    ops = list[map(int, input().split())]
+    nums = list(map(int, input().split()))
+    ops = list(map(int, input().split()))
     mx, mn = solve(nums, ops, N)
     print(mx)
     print(mn)

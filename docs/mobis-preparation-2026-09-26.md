@@ -8,7 +8,7 @@
 |---|---|---|
 | 9/26 | 정렬·문자열·해시 10문제 완료 | 완료 기록 유지 |
 | 9/27 | 베스트앨범 + 새 문제 9개 + 정렬 드릴·복습 | 8~9시간 |
-| 9/28 | 새 문제 5개 180분 모의 + 새 문제 5개 + 오답 | 8~9시간 |
+| 9/28 | 새 문제 5개 180분 모의 + 새 유형 5개 + DFS·백트래킹 2개 + 오답 | 9~10시간 |
 | 추가 도전 | 9/27~28 기본 분량 완료 후 새 문제 3개 | 별도 2~3시간 |
 | 9/29 | 막혔던 문제 최대 2개 + 실수 점검 | 1~1.5시간 |
 
@@ -63,16 +63,16 @@
 |---|---|---|---|---:|---|
 | 11 | [베스트앨범](https://school.programmers.co.kr/learn/courses/30/lessons/42579) | Lv.3 / 재풀이 | 그룹 집계·여러 정렬 조건 | 35분 | □ |
 | 12 | [주차 요금 계산](https://school.programmers.co.kr/learn/courses/30/lessons/92341) | Lv.2 / 새 문제 | 시간 파싱·누적·정렬 | 40분 | ☑ |
-| 13 | [튜플](https://school.programmers.co.kr/learn/courses/30/lessons/64065) | Lv.2 / 새 문제 | 문자열 파싱·배열·중복 처리 | 35분 | □ |
-| 14 | [롤케이크 자르기](https://school.programmers.co.kr/learn/courses/30/lessons/132265) | Lv.2 / 새 문제 | 배열 분할·빈도 갱신·복잡도 | 35분 | □ |
-| 15 | [연속된 부분 수열의 합](https://school.programmers.co.kr/learn/courses/30/lessons/178870) | Lv.2 / 새 문제 | 구간 합·포인터 이동·동률 | 35분 | □ |
-| 16 | [구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) | Lv.2 / 새 문제 | 정렬 후 선택·그리디 근거 | 25분 | □ |
-| 17 | [더 맵게](https://school.programmers.co.kr/learn/courses/30/lessons/42626) | Lv.2 / 새 문제 | 힙·최솟값 반복 처리 | 25분 | □ |
-| 18 | [야근 지수](https://school.programmers.co.kr/learn/courses/30/lessons/12927) | Lv.3 / 새 문제 | 그리디·최댓값 반복 처리 | 40분 | □ |
-| 19 | [피로도](https://school.programmers.co.kr/learn/courses/30/lessons/87946) | Lv.2 / 새 문제 | 완전탐색·순서 선택·상태 복원 | 40분 | □ |
-| 20 | [숫자 변환하기](https://school.programmers.co.kr/learn/courses/30/lessons/154538) | Lv.2 / 새 문제 | 배열 상태·최소 횟수·도달 불가 | 35분 | □ |
+| 13 | [튜플](https://school.programmers.co.kr/learn/courses/30/lessons/64065) | Lv.2 / 새 문제 | 문자열 파싱·배열·중복 처리 | 35분 | ☑ |
+| 14 | [롤케이크 자르기](https://school.programmers.co.kr/learn/courses/30/lessons/132265) | Lv.2 / 새 문제 | 배열 분할·빈도 갱신·복잡도 | 35분 | ☑ |
+| 15 | [연속된 부분 수열의 합](https://school.programmers.co.kr/learn/courses/30/lessons/178870) | Lv.2 / 새 문제 | 구간 합·포인터 이동·동률 | 35분 | ☑ |
+| 16 | [구명보트](https://school.programmers.co.kr/learn/courses/30/lessons/42885) | Lv.2 / 새 문제 | 정렬 후 선택·그리디 근거 | 25분 | ☑ |
+| 17 | [더 맵게](https://school.programmers.co.kr/learn/courses/30/lessons/42626) | Lv.2 / 새 문제 | 힙·최솟값 반복 처리 | 25분 | ☑ |
+| 18 | [야근 지수](https://school.programmers.co.kr/learn/courses/30/lessons/12927) | Lv.3 / 새 문제 | 그리디·최댓값 반복 처리 | 40분 | ☑ |
+| 19 | [피로도](https://school.programmers.co.kr/learn/courses/30/lessons/87946) | Lv.2 / 새 문제 | 완전탐색·순서 선택·상태 복원 | 40분 | ☑ |
+| 20 | [숫자 변환하기](https://school.programmers.co.kr/learn/courses/30/lessons/154538) | Lv.2 / 새 문제 | 배열 상태·최소 횟수·도달 불가 | 35분 | ☑ |
 
-## 9/28 — 모의 5문제 + 새 유형 5문제
+## 9/28 — 모의 5문제 + 새 유형 5문제 + DFS·백트래킹 2문제
 
 ### 180분 모의
 
@@ -96,7 +96,14 @@
 | 29 | [배달](https://school.programmers.co.kr/learn/courses/30/lessons/12978) | Lv.2 / 새 문제 | 가중치 최단거리·중복 간선 | 40분 | □ |
 | 30 | [입국심사](https://school.programmers.co.kr/learn/courses/30/lessons/43238) | Lv.3 / 새 문제 | 이분탐색·가능 여부 판정·경계 | 45분 | □ |
 
-모의 180분 + 보강 190분 + 오답 60분 + 휴식. 모의에서 틀린 기본 문제부터 고치고 보강으로 넘어간다.
+### DFS·백트래킹 보강 / 60분
+
+| 문제 | 난이도 / 구분 | 확인할 능력 | 상한 | 결과 |
+|---|---|---|---:|---|
+| [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | Lv.2 / 새 문제 | DFS 분기·종료 조건·경우의 수 집계 | 25분 | □ |
+| [소수 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/42839) | Lv.2 / 새 문제 | 순열 백트래킹·방문 복원·중복 제거 | 35분 | □ |
+
+모의 180분 + 새 유형 190분 + DFS·백트래킹 60분 + 오답 60분 + 휴식. 모의에서 틀린 기본 문제부터 고치고 새 유형, DFS·백트래킹 순서로 넘어간다. 위 2문제는 기존 30문제 목표와 별도다.
 
 ## 추가 도전 — 33문제까지
 

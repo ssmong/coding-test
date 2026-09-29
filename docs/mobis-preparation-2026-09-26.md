@@ -103,8 +103,8 @@
 | 순서 | 유형 | 문제 | 구분 | 확인할 능력 | 상한 | 결과 |
 |---|---|---|---|---|---:|---|
 | 1 | 다익스트라 | [BOJ 1916 최소비용 구하기](https://www.acmicpc.net/problem/1916) | 재풀이 | 인접 리스트·거리 갱신·힙의 오래된 항목 처리 | 30분 | □ |
-| 2 | DP | [멀리 뛰기](https://school.programmers.co.kr/learn/courses/30/lessons/12914) | 새 문제 | 상태 의미·초기값·경우의 수 누적 | 25분 | □ |
-| 3 | 문자열 | [[1차] 뉴스 클러스터링](https://school.programmers.co.kr/learn/courses/30/lessons/17677) | 새 문제 | 대소문자·문자 판별·중복 빈도·빈 입력 | 35분 | □ |
+| 2 | DP | [멀리 뛰기](https://school.programmers.co.kr/learn/courses/30/lessons/12914) | 새 문제 | 상태 의미·초기값·경우의 수 누적 | 25분 | ☑ |
+| 3 | 문자열 | [[1차] 뉴스 클러스터링](https://school.programmers.co.kr/learn/courses/30/lessons/17677) | 새 문제 | 대소문자·문자 판별·중복 빈도·빈 입력 | 35분 | ☑ |
 | 4 | 정렬 | [베스트앨범](https://school.programmers.co.kr/learn/courses/30/lessons/42579) | 미완료 재풀이 | 그룹 합계·재생 수·동률 인덱스 순서 | 35분 | □ |
 | 5 | 다익스트라 | [BOJ 1504 특정한 최단 경로](https://www.acmicpc.net/problem/1504) | 새 문제 | 여러 시작점의 거리·필수 경유 순서·도달 불가 | 45분 | □ |
 | 6 | DP | [정수 삼각형](https://school.programmers.co.kr/learn/courses/30/lessons/43105) | 재풀이 | 2차원 상태·전이·양끝 경계 | 25분 | □ |
